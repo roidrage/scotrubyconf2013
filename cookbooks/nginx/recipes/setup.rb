@@ -8,7 +8,7 @@ service "nginx" do
   action :start
 end
 
-directory node[:nginx][:www_root] do
+directory node[:nginx][:app_root] do
   action :create
   owner "www-data"
   group "www-data"

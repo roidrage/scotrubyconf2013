@@ -4,18 +4,19 @@ package "git" do
   action :install
 end
 
-directory "/var/www/travis-ci.org/shared/config" do
+directory "#{node[:nginx][:shared_dir]}/config" do
   action :create
+  recursive true
 end
 
-template "/var/www/travis-ci.org/shared/config/database.yml" do
+template "#{node[:nginx][:shared_dir]}/database.yml" do
   source "database.yml.erb"
   owner "www-data"
   group "www-data"
   mode "600"
 end
 
-deploy "/var/www/travis-ci.org" do
+deploy node[:nginx][:app_root] do
   migrate false
   repo "file:///src/travis-ci.org"
   notifies :reload, 'service[nginx]'

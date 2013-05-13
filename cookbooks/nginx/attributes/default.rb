@@ -1,6 +1,9 @@
 default[:nginx][:version] = '1.1.19-1'
-default[:nginx][:host_name] = 'travis-ci.org'
-default[:nginx][:www_root] = "/var/www/#{node[:nginx][:host_name]}/current"
+default[:nginx][:host_name] = 'localhost'
+default[:nginx][:app_root] = "/var/www/#{node[:nginx][:host_name]}"
+default[:nginx][:www_root] = "#{node[:nginx][:app_root]}/current"
+
+default[:nginx][:shared_dir] = "/var/www/#{node[:nginx][:host_name]}/shared"
 
 default[:nginx][:sites_available] = '/etc/nginx/sites-available/'
 default[:nginx][:sites_enabled] = '/etc/nginx/sites-enabled/'
