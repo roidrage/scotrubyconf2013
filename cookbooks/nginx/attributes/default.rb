@@ -1,5 +1,5 @@
 default[:nginx][:version] = '1.1.19-1'
-default[:nginx][:host_name] = 'localhost'
+default[:nginx][:host_name] = 'travis.dev'
 default[:nginx][:app_root] = "/var/www/#{node[:nginx][:host_name]}"
 default[:nginx][:www_root] = "#{node[:nginx][:app_root]}/current"
 

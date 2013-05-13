@@ -15,7 +15,7 @@ directory node[:nginx][:app_root] do
   recursive true
 end
 
-template "/etc/nginx/sites-available/travis-ci.org" do
+template node[:nginx][:site_config] do
   source "travis-ci.org.erb"
   variables host_name: node[:nginx][:host_name],
             www_root: node[:nginx][:www_root]
